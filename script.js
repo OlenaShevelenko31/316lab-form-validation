@@ -6,6 +6,10 @@ const email = regForm.elements["email"];
 const password = regForm.elements["password"];
 const regRepatPassword = regForm.elements["passwordCheck"];
 
+const usernameInputLog = regForm.elements["usernameLog"];
+const passwordLog = regForm.elements["passwordLog"];
+
+
 console.log(regForm);
 
 // ==========================Registration form validation================================
@@ -28,17 +32,17 @@ function validate(e){
 
 
     const valPassword = validPassword();
-    // if(valPassword === false){
-    //     e.preventDefault();
-    //     e.returnValue = false;
-    //     return false;
-    // }
+    if(valPassword === false){
+        e.preventDefault();
+        e.returnValue = false;
+        return false;
+    }
     const valRepeatPassword = validRepeatPassword();
-    // if(valRepeatPassword === false){
-    //     e.preventDefault();
-    //     e.returnValue = false;
-    //     return false;
-    // }
+    if(valRepeatPassword === false){
+        e.preventDefault();
+        e.returnValue = false;
+        return false;
+    }
     // Password and Repeat Password match
     if (valRepeatPassword !== valPassword) {
         alert('Passwords do not match');
@@ -68,7 +72,7 @@ function validateUsername (){
         return false;
     }
 
-    if (!/^[a-zA-Z0-9]+$/.test(usernameInput.value)) { // The username cannot contain any special characters or whitespace.
+    if (!/^[~!@#$%^&*()a-zA-Z0-9]+$/.test(usernameInput.value)) { // The username cannot contain any special characters or whitespace.
         alert("Username cannot contain any special characters or whitespace.");
         usernameInput.focus();
         return false;
@@ -164,18 +168,18 @@ logForm.addEventListener("submit" , validateLoginForm);
 function validateLoginForm(e){
     e.preventDefault();
 
-    const username = usernameInput.value.toLowerCase(); 
-    if (usernameInput === "") {
+    const usernameLog = usernameInputLog.value.toLowerCase(); 
+    if (usernameLog === "") {
         alert("Username cannot be blank.");
-        usernameInput.focus();
+        usernameLog.focus();
         return;
     }
    
 
-    const password = password.value;
-    if (password === "") {
+    const password2 = passwordLog.value;
+    if (password2 === "") {
         alert("Password cannot be blank.");
-        password.focus();
+        password2.focus();
         return;
     }
  
@@ -187,8 +191,8 @@ function validateLoginForm(e){
 }
 // Function to clear login form fields
 function clearLoginFormFields() {
-    usernameInput.value = "";
-    password.value = "";
+    usernameLog.value = "";
+    password2.value = "";
     rememberMeCheckbox.checked = false;
 }
 

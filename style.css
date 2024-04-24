@@ -79,6 +79,7 @@ body {
 .form-container input[type="submit"]:hover {
   background: #ffab40;
 }
+
 .form-container .input-icon {
   position: absolute;
   left: 10px;
